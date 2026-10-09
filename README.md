@@ -64,3 +64,7 @@ progress.setHidden(false);
 
 Файл `script.js` относится к демо: для управления компонентом
 из другого приложения он не требуется.
+
+## Демо
+
+[Открыть приложение](https://gpshfrd.github.io/progress-block/)

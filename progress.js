@@ -14,6 +14,7 @@ class Progress {
         const progress = Math.min(Math.max(number, 0), 100);
 
         this.arc.style.strokeDashoffset = 100 - progress;
+        this.arc.setAttribute('aria-valuenow', String(progress));
     }
 
     setAnimated(isAnimated) {
