@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #000;
+  background: #fff;
+}
+
+h1 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.demo {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  padding: 20px;
+}
+
+.preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring {
+  display: block;
+  width: 120px;
+  height: 120px;
+}
+
+.ring circle {
+  fill: none;
+  stroke-width: 12;
+}
+
+.ring-track {
+  stroke: #eff3f6;
+}
+
+.ring-progress {
+  stroke: #0060FF;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 35;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.ring.is-animated {
+  animation: spin 2s linear infinite;
+}
+
+.ring.is-hidden {
+    visibility: hidden;
+}
+
+.controls {
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  gap: 12px;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  cursor: pointer;
+}
+
+.control input[type="checkbox"] {
+  appearance: none;
+  position: relative;
+  width: 45px;
+  height: 30px;
+  flex-shrink: 0;
+  margin: 0;
+  border-radius: 16px;
+  background: #eff3f6;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.control input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+}
+
+.control input[type="checkbox"]:checked {
+  background: #0060FF;
+}
+
+.control input[type="checkbox"]:checked::before {
+  transform: translateX(17px);
+}
+
+.control input:focus-visible {
+  border: 2px solid #0060FF;
+}
+
+.error {
+  margin: 0;
+  max-width: 180px;
+  color: #b42318;
+  font-size: 12px;
+}
+
+.error:empty {
+  display: none;
+}
+
+#value {
+  width: 45px;
+  height: 30px;
+  padding: 0 4px;
+  border: 1px solid #000;
+  border-radius: 16px;
+  background: #fff;
+  font: inherit;
+  font-size: 14px;
+  text-align: center;
+  appearance: textfield;
+}
+
+#value[aria-invalid="true"] {
+  border-color: #b42318;
+}
+
+#value::-webkit-inner-spin-button,
+#value::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+@media (orientation: landscape) {
+  .demo {
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
